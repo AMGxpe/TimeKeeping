@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { DatePipe } from '@angular/common';
 
 @Component({
@@ -8,10 +8,11 @@ import { DatePipe } from '@angular/common';
   styleUrl: './calendar.component.css'
 })
 export class CalendarComponent implements OnInit {
+  @Output() daysInMonthEvent = new EventEmitter<DayState[]>()
   date = new Date();
   daysInMonth: number[] = [];
   firstDayOfMonth: number = 0;
-  daysInMonthState: DayState[] = []
+  daysInMonthState: DayState[] = [];
 
 
   ngOnInit(): void {
@@ -52,7 +53,8 @@ export class CalendarComponent implements OnInit {
         })
       }
     })
-    console.log(JSON.stringify(this.daysInMonthState))
+    this.daysInMonthEvent.emit(this.daysInMonthState)
+    // console.log(JSON.stringify(this.daysInMonthState))
     this.firstDayOfMonth = firstDayOfMonth;
   }
 

@@ -1,18 +1,18 @@
-<details class="group w-full bg-gray-300 rounded py-3 px-1.5">
+<details class="group w-full bg-gray-300 py-3 px-1.5">
   <summary class="flex items-center justify-between">
     <div class="flex items-center justify-start">
       <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor"
            class="size-6">
         <path stroke-linecap="round" stroke-linejoin="round" d="M12 6v6h4.5m4.5 0a9 9 0 1 1-18 0 9 9 0 0 1 18 0Z"/>
       </svg>
-      <h6 class="mx-3">Title no cambia?</h6>
+      <h6 class="mx-3">{{ time?.date | date }}</h6>
     </div>
     <span>Total de horas: {{ time?.hoursWorked }} horas {{ time?.minutesWorked }} minutos</span>
   </summary>
   <div class="m-1 p-3 bg-gray-400 rounded flex items-center justify-center">
     <div class="flex items-center justify-start gap-1">
       <div class="flex items-center justify-start gap-1">
-        @for (timeRecord of time?.timeRecords; track timeRecord.hour) {
+        @for (timeRecord of time?.timeRecords; track timeRecord.type) {
           <app-hourpicker [timeRecord]="timeRecord"/>
         }
       </div>
