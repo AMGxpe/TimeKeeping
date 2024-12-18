@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { DatePipe, JsonPipe } from '@angular/common';
+import { DatePipe } from '@angular/common';
 
 @Component({
   selector: 'app-calendar',
@@ -45,11 +45,10 @@ export class CalendarComponent implements OnInit {
       } else {
         const dayOfMonth = new Date(year, month, day).getDay();
         let isSelectable = dayOfMonth != 0 && dayOfMonth != 6
-        let isSelected = isSelectable
         this.daysInMonthState.push({
           day: day,
           selectable: isSelectable,
-          selected: isSelected
+          selected: isSelectable
         })
       }
     })
