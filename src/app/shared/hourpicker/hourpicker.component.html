@@ -1,0 +1,8 @@
+<div class="flex justify-center items-center">
+  <p>{{ timeRecord.type }}:</p>
+  <div class="flex justify-center items-center gap-0">
+    <app-countpicker [max]="23" (countEvent)="hourValue($event)" [value]="timeRecord.hour"/>
+    <span>:</span>
+    <app-countpicker [max]="59" (countEvent)="minutesChange($event)" [value]="timeRecord.minutes"/>
+  </div>
+</div>
