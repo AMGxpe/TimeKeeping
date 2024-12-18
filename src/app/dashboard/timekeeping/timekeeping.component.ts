@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { TimeComponent } from '../../shared/time/time.component';
 import { CalendarComponent } from '../../shared/calendar/calendar.component';
+import { ApiService } from '../../api.service';
 
 export enum TimeRecordType {
   IN_1 = 'Entrada 1',
@@ -61,7 +62,9 @@ export class TimekeepingComponent {
       type: TimeRecordType.OUT_2
     }]
   }
-
+constructor(private api: ApiService) {
+    this.api.getWorkdays()
+}
   showMyData() {
     console.log(JSON.stringify(this.timeKeep))
   }
